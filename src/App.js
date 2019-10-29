@@ -8,8 +8,8 @@ function App() {
   return (
     <div className="Resizer">
       <SplitPane split="vertical" minSize={50} defaultSize={500}>
-        <RightWrapper/>
         <LeftWrapper/>
+        <RightWrapper/>
       </SplitPane>
     </div>
   );
