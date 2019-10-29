@@ -1,12 +1,13 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
+import SplitPane from "react-split-pane";
 
 function App() {
   return (
-    <div className="App">
+    <div className="Resizer">
       <SplitPane split="vertical" minSize={50} defaultSize={1000}>
-        <div>H</div>
-        <div>H</div>
+        <div>Left Pane</div>
+        <div>Right Pane</div>
       </SplitPane>
     </div>
   );
