@@ -3,7 +3,10 @@ import LeftHeader from "./leftHeader"
 
 function LeftWrapper() {
   return (
-    <div>LeftWrapper</div>
+    <div>
+      <LeftHeader/>
+      left body
+    </div> 
   )
 }
 
