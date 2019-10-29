@@ -1,10 +1,13 @@
 import React from "react";
-import RightHeader from "./rightHeader"
+import RightHeader from "./rightHeader";
 
 function RightWrapper() {
   return (
-    <div>RightWrapper</div>
-  )
+    <div>
+      <RightHeader />
+      right body
+    </div>
+  );
 }
 
-export default RightWrapper
+export default RightWrapper;
