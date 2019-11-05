@@ -1,11 +1,12 @@
 import React from "react";
 import LeftHeader from "./leftHeader"
+import CarGrid from "./carGrid"
 
 function LeftWrapper() {
   return (
     <div>
       <LeftHeader/>
-      left body
+      <CarGrid/>
     </div> 
   )
 }
