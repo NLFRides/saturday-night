@@ -17,6 +17,7 @@ function LeftHeader() {
           <Nav className="mr-auto">
             <Nav.Link href="#home">Export to CSV</Nav.Link>
             <Nav.Link>Date</Nav.Link>
+            <Nav.Link href="#home">Add</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

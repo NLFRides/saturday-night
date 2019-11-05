@@ -16,6 +16,7 @@ function RightHeader() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link href="#home">Add Filter</Nav.Link>
+            <Nav.Link href="#home">Add</Nav.Link>
           </Nav>
           <Form inline>
             <FormControl type="text" placeholder="Search" className="mr-sm-2" />
