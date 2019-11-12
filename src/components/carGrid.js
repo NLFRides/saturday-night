@@ -10,7 +10,7 @@ export default class AddRemoveLayout extends React.PureComponent {
   static defaultProps = {
     className: "layout",
     cols: { lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 },
-    rowHeight: 100
+    rowHeight: 50
   };
 
   constructor(props) {
@@ -20,10 +20,11 @@ export default class AddRemoveLayout extends React.PureComponent {
       items: [0, 1, 2, 3].map(function(i, key, list) {
         return {
           i: i.toString(),
-          x: i * 2,
+          x: 0,
           y: 0,
           w: 2,
           h: 2,
+          isResizable: false,
           add: i === (list.length - 1).toString()
         };
       }),
@@ -76,7 +77,8 @@ export default class AddRemoveLayout extends React.PureComponent {
         x: (this.state.items.length * 2) % (this.state.cols || 12),
         y: Infinity, // puts it at the bottom
         w: 2,
-        h: 2
+        h: 2,
+        isResizable: false
       }),
       // Increment the counter to ensure key is always unique.
       newCounter: this.state.newCounter + 1
