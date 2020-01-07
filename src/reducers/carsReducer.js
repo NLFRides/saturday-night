@@ -21,7 +21,7 @@ const initialState = [
   },
   {
     title: "Jeff Huang",
-    id: 0,
+    id: 1,
     riders: [
       {
         id: 0,
