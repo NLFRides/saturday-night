@@ -1,18 +1,25 @@
 import React from "react";
 import "./App.css";
+import { connect } from "react-redux";
 import SplitPane from "react-split-pane";
-import RightWrapper from "./components/rightWrapper"
-import LeftWrapper from "./components/leftWrapper"
+import Car from "./components/Car";
 
-function App() {
+const App = ({ state }) => {
+  
+  console.log(state);
+
   return (
-    <div className="Resizer">
-      <SplitPane split="vertical" minSize={50} defaultSize={500}>
-        <LeftWrapper/>
-        <RightWrapper/>
-      </SplitPane>
+    <div>
+      {/* <SplitPane split="vertical" minSize={100} defaultSize={700} > */}
+        <Car title="Jason Huang"></Car>
+        { state.cars.map(car => <Car title={1}></Car>) }
+      {/* </SplitPane> */}
     </div>
-  );
-}
+  )
+};
 
-export default App;
+const mapStateToProps = state => ({
+  cars: state.cars
+});
+
+export default connect(null)(App);
