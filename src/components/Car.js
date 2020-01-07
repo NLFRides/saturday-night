@@ -11,12 +11,11 @@ const styles = {
   }
 }
 
-const Car = ({ title }) => {
+const Car = ({ title, riders }) => {
   return (
     <div style={ styles.container }>
       <h2>{title}</h2>
-      <Rider></Rider>
-      <Rider></Rider>
+      { riders.map(rider => <Rider key={rider.id} name={ rider.name }></Rider>) }
     </div>
   );
 }

@@ -13,10 +13,12 @@ const handleDelete = () => {
   console.info('You clicked the delete icon.');
 };
 
-const Rider = () => {
+const Rider = ({ name }) => {
   return (
     <Tooltip title="South | 9:00AM | LIT">
-      <Chip style={styles.chip} label="Katrina Chork" onDelete={ handleDelete } color="primary" />
+      <div>
+        <Chip style={styles.chip} label={ name } onDelete={ handleDelete } color="primary" />
+      </div>
     </Tooltip>
   );
 }

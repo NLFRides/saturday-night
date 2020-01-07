@@ -11,10 +11,17 @@ const initialState = [
         lunch: 0
       },
       {
-        id: 0,
+        id: 1,
         name: "Patie",
         location: "South",
         notes: "PH",
+        lunch: 1
+      },
+      {
+        id: 2,
+        name: "George",
+        location: "North",
+        notes: "GH",
         lunch: 1
       }
     ]
@@ -25,18 +32,44 @@ const initialState = [
     riders: [
       {
         id: 0,
-        name: "Esthee",
+        name: "Katrono",
         location: "South",
         notes: "EL",
         lunch: 0
       },
       {
-        id: 0,
-        name: "Patie",
+        id: 1,
+        name: "BewhY",
         location: "South",
-        notes: "PH",
+        notes: "BY",
         lunch: 1
       }
+    ]
+  },
+  {
+    title: "Kyumin Huang",
+    id: 2,
+    riders: [
+      {
+        id: 0,
+        name: "Kristine",
+        location: "North",
+        notes: "KY",
+        lunch: 0
+      },
+      {
+        id: 1,
+        name: "Pristine",
+        location: "South",
+        notes: "GG",
+        lunch: 1
+      }
+    ]
+  },
+  {
+    title: "Free Riders",
+    id: 3,
+    riders: [
     ]
   }
 ];
