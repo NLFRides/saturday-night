@@ -16,9 +16,7 @@ const handleDelete = () => {
 const Rider = ({ name }) => {
   return (
     <Tooltip title="South | 9:00AM | LIT">
-      <div>
-        <Chip style={styles.chip} label={ name } onDelete={ handleDelete } color="primary" />
-      </div>
+      <Chip style={styles.chip} label={ name } onDelete={ handleDelete } color="primary" />
     </Tooltip>
   );
 }

@@ -24,7 +24,7 @@ function App(state) {
         <AddButton type="rider"></AddButton>
       </div>
       <div style={styles.carsGrid}>
-        { state.cars.map(car => <Car key={car.id} title={ car.title } riders = { car.riders }></Car>) }
+        { state.cars.map(car => <Car key={car.id} driverName={ car.driverName } riders = { car.riders }></Car>) }
       </div>
     </div>
   )

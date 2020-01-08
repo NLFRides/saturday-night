@@ -1,5 +1,6 @@
 import React from "react";
 import Rider from "./Rider"
+import Tooltip from '@material-ui/core/Tooltip';
 
 const styles = {
   container: {
@@ -11,10 +12,12 @@ const styles = {
   }
 }
 
-const Car = ({ title, riders }) => {
+const Car = ({ driverName, riders }) => {
   return (
     <div style={ styles.container }>
-      <h2>{title}</h2>
+      <Tooltip title="South | 9:00AM | LIT">
+        <h2>{driverName}</h2>
+      </Tooltip>
       { riders.map(rider => <Rider key={rider.id} name={ rider.name }></Rider>) }
     </div>
   );

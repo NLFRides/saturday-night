@@ -1,6 +1,10 @@
+import { CONSTANTS } from "../actions";
+
+let carId = 4;
+
 const initialState = [
   {
-    title: "Jason Huang",
+    driverName: "Jason Huang",
     id: 0,
     riders: [
       {
@@ -27,7 +31,7 @@ const initialState = [
     ]
   },
   {
-    title: "Jeff Huang",
+    driverName: "Jeff Huang",
     id: 1,
     riders: [
       {
@@ -47,7 +51,7 @@ const initialState = [
     ]
   },
   {
-    title: "Kyumin Huang",
+    driverName: "Kyumin Huang",
     id: 2,
     riders: [
       {
@@ -67,7 +71,7 @@ const initialState = [
     ]
   },
   {
-    title: "Free Riders",
+    driverName: "Not Yet Assigned",
     id: 3,
     riders: [
     ]
@@ -76,6 +80,17 @@ const initialState = [
 
 const carsReducer = (state = initialState, action) => {
   switch (action.type) {
+    case CONSTANTS.ADD_CAR:
+      const { driverName, lunch, notes } = action.payload;
+
+      console.log(driverName);
+
+      const newCar = {
+        driverName: driverName,
+        id: carId++,
+        riders: []
+      }
+      return [...state, newCar]
     default:
       return state;
   }

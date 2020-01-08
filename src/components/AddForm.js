@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from "@material-ui/core/Button";
+import { connect } from "react-redux";
+import { addCar } from "../actions";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -27,21 +29,69 @@ function getModalStyle() {
   };
 }
 
-const AddForm = ({ type }) => {
+const AddForm = ({ type, dispatch }) => {
 
-  const title = (type === "car")? "Add Car" : "Add Rider";
+  const isRider = (type === "rider");
+
+  const [info, setInfo] = useState({name: '', location: '', lunch: '', notes: ''});
+
+  const handleInputChange = e => {
+    const { name, value } = e.target
+    setInfo({ ...info, [name]: value })
+  }
+
+  const handleAddCar = () => {
+    if (info.name && info.lunch) {
+      dispatch(addCar(info.name, info.lunch, info.notes))
+    }
+  }
+
+  const handleAddRider = () => {
+    
+  }
+
+  const title = isRider? "Add Rider" : "Add Car";
 
   const classes = useStyles();
-  const [modalStyle] = React.useState(getModalStyle);
+  const [modalStyle] = useState(getModalStyle);
 
   return (
     <div style={modalStyle} className={classes.paper}>
       <h2 id="simple-modal-title">{title}</h2>
-      <TextField id="name-field" label="Name" variant="outlined" />
-      { (type === "rider")? <TextField id="location-field" label="Location" variant="outlined" /> : null }
-      <Button>Add</Button>
+      <TextField 
+        id="name-field" 
+        name="name" 
+        label="Name" 
+        variant="outlined" 
+        onChange={handleInputChange} />
+
+      <TextField 
+        id="lunch-field"
+        name="lunch"
+        label="Lunch"
+        variant="outlined"
+        onChange={handleInputChange}/> 
+
+      { isRider? 
+      <TextField 
+        id="location-field"
+        name="location"
+        label="Location"
+        variant="outlined"
+        onChange={handleInputChange}/> 
+      : null }
+
+      <TextField 
+        id="notes-field"
+        name="notes"
+        label="Notes"
+        variant="outlined"
+        onChange={handleInputChange}/> 
+      <Button
+        onClick={ isRider? handleAddRider : handleAddCar }
+      >Add</Button>
     </div>
   )
 };
 
-export default AddForm;
+export default connect()(AddForm);
