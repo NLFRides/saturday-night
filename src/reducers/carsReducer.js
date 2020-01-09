@@ -1,7 +1,7 @@
 import { CONSTANTS } from "../actions";
 
 let carID = 4;
-let riderID = 3;
+let riderID = 7;
 
 const initialState = [
   {
@@ -36,14 +36,14 @@ const initialState = [
     id: 1,
     riders: [
       {
-        id: 0,
+        id: 3,
         name: "Katrono",
         lunch: 0,
         location: "South",
         notes: "EL",
       },
       {
-        id: 1,
+        id: 4,
         name: "BewhY",
         lunch: 1,
         location: "South",
@@ -56,14 +56,14 @@ const initialState = [
     id: 2,
     riders: [
       {
-        id: 0,
+        id: 5,
         name: "Kristine",
         lunch: 0,
         location: "North",
         notes: "KY",
       },
       {
-        id: 1,
+        id: 6,
         name: "Pristine",
         lunch: 1,
         location: "South",
@@ -86,10 +86,12 @@ const carsReducer = (state = initialState, action) => {
   switch (action.type) {
     case CONSTANTS.ADD_CAR:
       const newCar = {
-        id: carID++,
-        driverName: payload.action,
+        id: carID,
+        driverName: payload.driverName,
         riders: []
       };
+
+      carID++;
 
       return [...state, newCar];
 
@@ -98,7 +100,7 @@ const carsReducer = (state = initialState, action) => {
       const newRider = {
         id: riderID++,
         name: payload.riderName,
-        lunch: payload.unch,
+        lunch: payload.lunch,
         location: payload.location,
         notes: payload.notes,
       };
