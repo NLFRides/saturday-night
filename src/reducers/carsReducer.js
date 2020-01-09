@@ -1,6 +1,7 @@
 import { CONSTANTS } from "../actions";
 
-let carId = 4;
+let carID = 4;
+let riderID = 3;
 
 const initialState = [
   {
@@ -10,23 +11,23 @@ const initialState = [
       {
         id: 0,
         name: "Esthee",
+        lunch: 0,
         location: "South",
         notes: "EL",
-        lunch: 0
       },
       {
         id: 1,
         name: "Patie",
+        lunch: 1,
         location: "South",
         notes: "PH",
-        lunch: 1
       },
       {
         id: 2,
         name: "George",
+        lunch: 1,
         location: "North",
         notes: "GH",
-        lunch: 1
       }
     ]
   },
@@ -37,16 +38,16 @@ const initialState = [
       {
         id: 0,
         name: "Katrono",
+        lunch: 0,
         location: "South",
         notes: "EL",
-        lunch: 0
       },
       {
         id: 1,
         name: "BewhY",
+        lunch: 1,
         location: "South",
         notes: "BY",
-        lunch: 1
       }
     ]
   },
@@ -57,40 +58,64 @@ const initialState = [
       {
         id: 0,
         name: "Kristine",
+        lunch: 0,
         location: "North",
         notes: "KY",
-        lunch: 0
       },
       {
         id: 1,
         name: "Pristine",
+        lunch: 1,
         location: "South",
         notes: "GG",
-        lunch: 1
       }
     ]
   },
   {
     driverName: "Not Yet Assigned",
-    id: 3,
+    id: -1,
     riders: [
     ]
   }
 ];
 
 const carsReducer = (state = initialState, action) => {
+
+  const payload = action.payload
+
   switch (action.type) {
     case CONSTANTS.ADD_CAR:
-      const { driverName, lunch, notes } = action.payload;
-
-      console.log(driverName);
-
       const newCar = {
-        driverName: driverName,
-        id: carId++,
+        id: carID++,
+        driverName: payload.action,
         riders: []
-      }
-      return [...state, newCar]
+      };
+
+      return [...state, newCar];
+
+    case CONSTANTS.ADD_RIDER:
+
+      const newRider = {
+        id: riderID++,
+        name: payload.riderName,
+        lunch: payload.unch,
+        location: payload.location,
+        notes: payload.notes,
+      };
+
+      const newState = state.map(car => {
+        if (car.id === -1) {
+          return {
+            ...car,
+            riders: [...car.riders, newRider]
+          };
+        } else {
+          return car
+        }
+      });
+
+      return newState;
+
     default:
       return state;
   }

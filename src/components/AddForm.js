@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
-import { addCar } from "../actions";
+import { addCar, addRider } from "../actions";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -29,7 +29,7 @@ function getModalStyle() {
   };
 }
 
-const AddForm = ({ type, dispatch }) => {
+const AddForm = ({ type, dispatch, onAdd }) => {
 
   const isRider = (type === "rider");
 
@@ -43,11 +43,19 @@ const AddForm = ({ type, dispatch }) => {
   const handleAddCar = () => {
     if (info.name && info.lunch) {
       dispatch(addCar(info.name, info.lunch, info.notes))
+      onAdd();
+    } else {
+      console.log("ask user to input req fields");
     }
   }
 
   const handleAddRider = () => {
-    
+    if (info.name && info.lunch && info.location) {
+      dispatch(addRider(info.name, info.lunch, info.location, info.notes))
+      onAdd();
+    } else {
+      console.log("ask user to input req fields");
+    }
   }
 
   const title = isRider? "Add Rider" : "Add Car";

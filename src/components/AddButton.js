@@ -32,7 +32,7 @@ const AddButton = ({ type }) => {
         open={open}
         onClose={handleClose}
       >
-        <AddForm type={type}/>
+        <AddForm type={type} onAdd={handleClose}/>
       </Modal>
     </div>
   );
