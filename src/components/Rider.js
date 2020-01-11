@@ -16,7 +16,7 @@ const handleDelete = () => {
 
 const Rider = ({ name, riderID, index }) => {
   return (
-    <Draggable draggableId={String(riderID)} index={index}>
+    <Draggable draggableId={riderID} index={index}>
       {provided => (
         <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
           <Tooltip title="South | 9:00AM | LIT">

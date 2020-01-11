@@ -1,8 +1,10 @@
 import React from "react";
 import "./App.css";
-import { connect } from "react-redux";
 import AddButton from "./components/AddButton";
 import { DragDropContext } from "react-beautiful-dnd";
+import { useDispatch, useSelector } from "react-redux";
+import { sort } from "./actions";
+import { Droppable } from "react-beautiful-dnd";
 import SplitPane from "react-split-pane";
 import Car from "./components/Car";
 
@@ -17,10 +19,25 @@ const styles = {
   }
 }
 
-function App(state) { 
+function App() { 
+  const cars = useSelector(state => state.cars);
+  const dispatch = useDispatch();
 
-  const onDragEnd = () => {
+  const onDragEnd = (result) => {
+    const { destination, source, draggableId, type } = result;
 
+    if (destination) {
+      dispatch(
+        sort(
+          source.droppableId,
+          destination.droppableId,
+          source.index,
+          destination.index,
+          draggableId,
+          type
+        )
+      );
+    }
   }
 
   return (
@@ -30,16 +47,23 @@ function App(state) {
           <AddButton type="car"></AddButton>
           <AddButton type="rider"></AddButton>
         </div>
-        <div style={styles.carsGrid}>
-          { state.cars.map(car => <Car key={car.id} carID={car.id} driverName={ car.driverName } riders = { car.riders }></Car>) }
-        </div>
+        <Droppable droppableId="all-cars" direction="horizontal" type="car">
+          {provided => (
+            <div {...provided.droppableProps} ref={provided.innerRef} style={styles.carsGrid}>
+              { cars.map((car, index) => 
+                <Car 
+                  key={car.id} 
+                  index={index}
+                  carID={car.id} 
+                  driverName={ car.driverName } 
+                  riders = { car.riders }/>) }
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
       </div>
     </DragDropContext>
   )
 };
 
-const mapStateToProps = state => ({
-  cars: state.cars
-});
-
-export default connect(mapStateToProps)(App);
+export default App;

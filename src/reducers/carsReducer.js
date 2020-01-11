@@ -5,25 +5,31 @@ let riderID = 7;
 
 const initialState = [
   {
+    driverName: "Not Yet Assigned",
+    id: `car-${0}`,
+    riders: [
+    ]
+  },
+  {
     driverName: "Jason Huang",
-    id: 0,
+    id: `car-${1}`,
     riders: [
       {
-        id: 0,
+        id: `rider-${0}`,
         name: "Esthee",
         lunch: 0,
         location: "South",
         notes: "EL",
       },
       {
-        id: 1,
+        id: `rider-${1}`,
         name: "Patie",
         lunch: 1,
         location: "South",
         notes: "PH",
       },
       {
-        id: 2,
+        id: `rider-${2}`,
         name: "George",
         lunch: 1,
         location: "North",
@@ -33,17 +39,17 @@ const initialState = [
   },
   {
     driverName: "Jeff Huang",
-    id: 1,
+    id: `car-${2}`,
     riders: [
       {
-        id: 3,
+        id: `rider-${3}`,
         name: "Katrono",
         lunch: 0,
         location: "South",
         notes: "EL",
       },
       {
-        id: 4,
+        id: `rider-${4}`,
         name: "BewhY",
         lunch: 1,
         location: "South",
@@ -53,17 +59,17 @@ const initialState = [
   },
   {
     driverName: "Kyumin Huang",
-    id: 2,
+    id: `car-${3}`,
     riders: [
       {
-        id: 5,
+        id: `rider-${5}`,
         name: "Kristine",
         lunch: 0,
         location: "North",
         notes: "KY",
       },
       {
-        id: 6,
+        id: `rider-${6}`,
         name: "Pristine",
         lunch: 1,
         location: "South",
@@ -71,42 +77,38 @@ const initialState = [
       }
     ]
   },
-  {
-    driverName: "Not Yet Assigned",
-    id: -1,
-    riders: [
-    ]
-  }
 ];
 
 const carsReducer = (state = initialState, action) => {
 
-  const payload = action.payload
-
   switch (action.type) {
-    case CONSTANTS.ADD_CAR:
+    case CONSTANTS.ADD_CAR: {
+      const { driverName } = action.payload
       const newCar = {
-        id: carID,
-        driverName: payload.driverName,
+        id: `car-${carID}`,
+        driverName: driverName,
         riders: []
       };
 
       carID++;
 
       return [...state, newCar];
+    }
 
-    case CONSTANTS.ADD_RIDER:
-
+    case CONSTANTS.ADD_RIDER: {
+      const { riderName, lunch, location, notes } = action.payload
       const newRider = {
-        id: riderID++,
-        name: payload.riderName,
-        lunch: payload.lunch,
-        location: payload.location,
-        notes: payload.notes,
+        id: `rider-${riderID}`,
+        name: riderName,
+        lunch: lunch,
+        location: location,
+        notes: notes,
       };
 
+      riderID++;
+
       const newState = state.map(car => {
-        if (car.id === -1) {
+        if (car.id === `car-${0}`) {
           return {
             ...car,
             riders: [...car.riders, newRider]
@@ -117,6 +119,39 @@ const carsReducer = (state = initialState, action) => {
       });
 
       return newState;
+    }
+
+    case CONSTANTS.DRAG_HAPPENED: {
+      const {
+        droppableIdStart,
+        droppableIdEnd,
+        droppableIndexStart,
+        droppableIndexEnd,
+        draggableId,
+        type,
+      } = action.payload;
+
+      const newState = [...state]
+
+      if (type === "car") {
+        const car = newState.splice(droppableIndexStart, 1);
+        newState.splice(droppableIndexEnd, 0, ...car);
+        return newState;
+      }
+
+      if (droppableIdStart === droppableIdEnd) {
+        const car = state.find(car => droppableIdStart === car.id);
+        const rider = car.riders.splice(droppableIndexStart, 1);
+        car.riders.splice(droppableIndexEnd, 0, ...rider);
+      } else {
+        const carStart = state.find(car => droppableIdStart === car.id);
+        const rider = carStart.riders.splice(droppableIndexStart, 1);
+        const carEnd = state.find(car => droppableIdEnd === car.id);
+        carEnd.riders.splice(droppableIndexEnd, 0, ...rider);
+      }
+
+      return newState;
+    }
 
     default:
       return state;

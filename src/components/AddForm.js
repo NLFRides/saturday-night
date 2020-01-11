@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from "@material-ui/core/Button";
-import { connect } from "react-redux";
 import { addCar, addRider } from "../actions";
 
 const useStyles = makeStyles(theme => ({
@@ -29,11 +29,12 @@ function getModalStyle() {
   };
 }
 
-const AddForm = ({ type, dispatch, onAdd }) => {
+const AddForm = ({ type, onAdd }) => {
 
   const isRider = (type === "rider");
 
   const [info, setInfo] = useState({name: '', location: '', lunch: '', notes: ''});
+  const dispatch = useDispatch();
 
   const handleInputChange = e => {
     const { name, value } = e.target
@@ -102,4 +103,5 @@ const AddForm = ({ type, dispatch, onAdd }) => {
   )
 };
 
-export default connect()(AddForm);
+export default React.forwardRef((props, ref) => <AddForm {...props} forwardedRef={ref} />);
+// export default (AddForm);
