@@ -18,6 +18,9 @@ const styles = {
 }
 
 const Car = ({ carID, driverName, riders, index }) => {
+
+  const carTooltip = `Info about Car's lunch and jaunts go here - ${driverName}`;
+
   return (
     <Draggable draggableId={carID} index={index}>
       {provided => (
@@ -25,7 +28,7 @@ const Car = ({ carID, driverName, riders, index }) => {
           <Droppable droppableId={carID} type="rider">
             {provided => (
               <div style={ styles.container }>
-                <Tooltip title="South | 9:00AM | LIT">
+                <Tooltip title={carTooltip}>
                   <h2>{driverName}</h2>
                 </Tooltip>
                 <div {...provided.droppableProps} ref={provided.innerRef} style={styles.riders} >

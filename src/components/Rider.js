@@ -15,11 +15,14 @@ const handleDelete = () => {
 };
 
 const Rider = ({ name, riderID, index }) => {
+
+  const riderTooltip = `Rider Tooltip - ${name}`;
+
   return (
     <Draggable draggableId={riderID} index={index}>
       {provided => (
         <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-          <Tooltip title="South | 9:00AM | LIT">
+          <Tooltip title={riderTooltip}>
             <Chip style={styles.chip} label={ name } onDelete={ handleDelete } color="primary" />
           </Tooltip>
         </div>
