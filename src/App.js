@@ -22,7 +22,7 @@ const styles = {
 function App() { 
   const cars = useSelector(state => state.cars);
   const dispatch = useDispatch();
-
+  
   const onDragEnd = (result) => {
     const { destination, source, draggableId, type } = result;
 

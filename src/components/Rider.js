@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import Chip from '@material-ui/core/Chip';
 import Tooltip from '@material-ui/core/Tooltip';
 import { Draggable } from "react-beautiful-dnd";

@@ -3,81 +3,26 @@ import { CONSTANTS } from "../actions";
 let carID = 4;
 let riderID = 7;
 
-const initialState = [
-  {
-    driverName: "Not Yet Assigned",
+const initialState = {
+  "car-0": {
     id: `car-${0}`,
-    riders: [
-    ]
-  },
-  {
     driverName: "Jason Huang",
+    lunch: 0,
+    riders: [
+      `rider-${0}`
+    ],
+    notes: "",
+  },
+  "car-1": {
     id: `car-${1}`,
-    riders: [
-      {
-        id: `rider-${0}`,
-        name: "Esthee",
-        lunch: 0,
-        location: "South",
-        notes: "EL",
-      },
-      {
-        id: `rider-${1}`,
-        name: "Patie",
-        lunch: 1,
-        location: "South",
-        notes: "PH",
-      },
-      {
-        id: `rider-${2}`,
-        name: "George",
-        lunch: 1,
-        location: "North",
-        notes: "GH",
-      }
-    ]
-  },
-  {
     driverName: "Jeff Huang",
-    id: `car-${2}`,
+    lunch: 0,
     riders: [
-      {
-        id: `rider-${3}`,
-        name: "Katrono",
-        lunch: 0,
-        location: "South",
-        notes: "EL",
-      },
-      {
-        id: `rider-${4}`,
-        name: "BewhY",
-        lunch: 1,
-        location: "South",
-        notes: "BY",
-      }
-    ]
+      `rider-${0}`
+    ],
+    notes: "",
   },
-  {
-    driverName: "Kyumin Huang",
-    id: `car-${3}`,
-    riders: [
-      {
-        id: `rider-${5}`,
-        name: "Kristine",
-        lunch: 0,
-        location: "North",
-        notes: "KY",
-      },
-      {
-        id: `rider-${6}`,
-        name: "Pristine",
-        lunch: 1,
-        location: "South",
-        notes: "GG",
-      }
-    ]
-  },
-];
+};
 
 const carsReducer = (state = initialState, action) => {
 
