@@ -1,7 +1,7 @@
 import { CONSTANTS } from "../actions";
 
 const initialState = [
-  "rider-2", "rider-3"
+  "rider-2"
 ];
 
 const unassignedRidersReducer = (state = initialState, action) => {
@@ -14,7 +14,21 @@ const unassignedRidersReducer = (state = initialState, action) => {
     }
 
     case CONSTANTS.DRAG_HAPPENED: {
-      return state;
+      const {
+        draggableID,
+        draggableType,
+        droppableStartID,
+        droppableEndID,
+        droppableStartIndex,
+        droppableEndIndex,
+      } = action.payload;
+
+      if (draggableType === "car") {
+        return state;
+      } else {
+        return state;
+      }
+
     }
 
     default:

@@ -20,7 +20,8 @@ const styles = {
 }
 
 function App() { 
-  const cars = useSelector(state => state.cars);
+
+  const carsOrder = useSelector(state => state.carsOrder);
   const dispatch = useDispatch();
   
   const onDragEnd = (result) => {
@@ -50,13 +51,12 @@ function App() {
         <Droppable droppableId="all-cars" direction="horizontal" type="car">
           {provided => (
             <div {...provided.droppableProps} ref={provided.innerRef} style={styles.carsGrid}>
-              { cars.map((car, index) => 
+              { carsOrder.map((carID, index) => 
                 <Car 
-                  key={car.id} 
+                  key={carID} 
                   index={index}
-                  carID={car.id} 
-                  driverName={ car.driverName } 
-                  riders = { car.riders }/>) }
+                  carID={carID} 
+                  />) }
               {provided.placeholder}
             </div>
           )}

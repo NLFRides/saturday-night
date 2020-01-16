@@ -24,13 +24,6 @@ const initialState = {
     location: "N",
     notes: "Nathan Notes",
   },
-  "rider-3": {
-    id: `rider-${3}`,
-    name: "Coogie",
-    lunch: 1,
-    location: "S",
-    notes: "Coogie Notes",
-  },
 };
 
 const ridersReducer = (state = initialState, action) => {
@@ -54,6 +47,8 @@ const ridersReducer = (state = initialState, action) => {
 
       return { ...state, [id]: newRider };
     }
+    default:
+      return state;
   }
 };
 

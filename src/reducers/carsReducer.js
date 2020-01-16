@@ -38,7 +38,6 @@ const carsReducer = (state = initialState, action) => {
         notes: notes,
       };
 
-      carID++;
       return { ...state, [id]: newCar };
     }
 
@@ -55,6 +54,8 @@ const carsReducer = (state = initialState, action) => {
       if (draggableType === "car") {
         return state;
       } else {
+        // CHECK THAT IF IT WAS DRAGGED INTO/OUT of UNSASSIGNED, UPDATE ACCORDINGLY
+
         const newState = { ...state };
 
         const carStart = state[droppableStartID]

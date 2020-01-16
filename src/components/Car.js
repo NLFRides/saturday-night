@@ -1,6 +1,7 @@
 import React from "react";
 import Rider from "./Rider"
 import Tooltip from '@material-ui/core/Tooltip';
+import { useSelector } from "react-redux";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 
 const styles = {
@@ -17,7 +18,17 @@ const styles = {
   }
 }
 
-const Car = ({ carID, driverName, riders, index }) => {
+const Car = ({ index, carID }) => {
+
+  const carsInfo = useSelector(state => state.carsInfo);
+
+  const {
+    id,
+    driverName,
+    lunch,
+    riders,
+    notes,
+  } = carsInfo[carID];
 
   const carTooltip = `Info about Car's lunch and jaunts go here - ${driverName}`;
 
@@ -29,7 +40,7 @@ const Car = ({ carID, driverName, riders, index }) => {
             {provided => (
               <div style={ styles.container }>
                 <Tooltip title={carTooltip}>
-                  <h2>{driverName}</h2>
+                  <h2>{ driverName }</h2>
                 </Tooltip>
                 <div {...provided.droppableProps} ref={provided.innerRef} style={styles.riders} >
                   { riders.map((rider, index) => <Rider key={rider.id} riderID={rider.id} index={index}name={ rider.name }></Rider>) }

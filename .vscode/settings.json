@@ -1,6 +1,4 @@
 {
-  "editor.formatOnSave": true,
-  "editor.formatOnPaste": true,
   "editor.defaultFormatter": "HookyQR.beautify"
   // "editor.defaultFormatter": "HookyQR.beautify"
 }
