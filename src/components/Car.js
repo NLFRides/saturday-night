@@ -30,7 +30,7 @@ const Car = ({ index, carID }) => {
     notes,
   } = carsInfo[carID];
 
-  const carTooltip = `Info about Car's lunch and jaunts go here - ${driverName}`;
+  const carTooltip = `CAR: ${driverName} | ${lunch} | ${notes}`;
 
   return (
     <Draggable draggableId={carID} index={index}>
@@ -43,7 +43,8 @@ const Car = ({ index, carID }) => {
                   <h2>{ driverName }</h2>
                 </Tooltip>
                 <div {...provided.droppableProps} ref={provided.innerRef} style={styles.riders} >
-                  { riders.map((rider, index) => <Rider key={rider.id} riderID={rider.id} index={index}name={ rider.name }></Rider>) }
+                  { riders.map((riderID, index) => 
+                    <Rider key={riderID} riderID={riderID} index={index} ></Rider>) }
                   { provided.placeholder }
                 </div>
               </div>
@@ -53,7 +54,6 @@ const Car = ({ index, carID }) => {
         )
       }
     </Draggable>
-
   );
 }
 

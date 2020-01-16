@@ -1,7 +1,7 @@
 import { CONSTANTS } from "../actions";
 import uuid from "uuidv4";
 
-export const addRider = (riderName, lunch, location, notes) => {
+export const addRider = (name, lunch, location, notes) => {
 
   const id = uuid();
 
@@ -9,7 +9,7 @@ export const addRider = (riderName, lunch, location, notes) => {
     type: CONSTANTS.ADD_RIDER,
     payload: {
       id,
-      riderName,
+      name,
       lunch,
       location,
       notes

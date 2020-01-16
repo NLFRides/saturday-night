@@ -31,7 +31,7 @@ const ridersReducer = (state = initialState, action) => {
     case CONSTANTS.ADD_RIDER: {
       const {
         id,
-        riderName,
+        name,
         lunch,
         location,
         notes
@@ -39,7 +39,7 @@ const ridersReducer = (state = initialState, action) => {
 
       const newRider = {
         id: id,
-        name: riderName,
+        name: name,
         lunch: lunch,
         location: location,
         notes: notes,

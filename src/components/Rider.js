@@ -15,9 +15,19 @@ const handleDelete = () => {
   console.info('You clicked the delete icon.');
 };
 
-const Rider = ({ name, riderID, index }) => {
+const Rider = ({ index, riderID }) => {
 
-  const riderTooltip = `Rider Tooltip - ${name}`;
+  const ridersInfo = useSelector(state => state.ridersInfo);
+
+  const {
+    id,
+    name,
+    lunch,
+    location,
+    notes,
+  } = ridersInfo[riderID];
+
+  const riderTooltip = `RIDER: ${name} | ${lunch} | ${location} | ${notes}`;
 
   return (
     <Draggable draggableId={riderID} index={index}>
