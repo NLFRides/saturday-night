@@ -1,5 +1,5 @@
 import { CONSTANTS } from "../actions";
-import uuid from "uuidv4";
+import { uuid } from "uuidv4";
 
 export const addRider = (name, lunch, location, notes) => {
 

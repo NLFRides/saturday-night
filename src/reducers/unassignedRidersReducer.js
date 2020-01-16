@@ -15,10 +15,10 @@ const unassignedRidersReducer = (state = initialState, action) => {
 
     case CONSTANTS.DRAG_HAPPENED: {
       const {
-        draggableID,
+        draggableId,
         draggableType,
-        droppableStartID,
-        droppableEndID,
+        droppableStartId,
+        droppableEndId,
         droppableStartIndex,
         droppableEndIndex,
       } = action.payload;

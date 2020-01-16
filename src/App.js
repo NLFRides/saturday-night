@@ -30,12 +30,12 @@ function App() {
     if (destination) {
       dispatch(
         sort(
+          draggableId,
+          type,
           source.droppableId,
           destination.droppableId,
           source.index,
           destination.index,
-          draggableId,
-          type
         )
       );
     }
@@ -51,11 +51,16 @@ function App() {
         <Droppable droppableId="all-cars" direction="horizontal" type="car">
           {provided => (
             <div {...provided.droppableProps} ref={provided.innerRef} style={styles.carsGrid}>
-              { carsOrder.map((carID, index) => 
+              <div><h2>Test</h2></div>
+              <SplitPane split="vertical" minSize={300} defaultSize={500}>
+                <div />
+                <div />
+              </SplitPane>
+              { carsOrder.map((carId, index) => 
                 <Car 
-                  key={carID} 
+                  key={carId} 
                   index={index}
-                  carID={carID} 
+                  carId={carId} 
                   />) }
               {provided.placeholder}
             </div>

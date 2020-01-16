@@ -1,5 +1,5 @@
 import { CONSTANTS } from "../actions";
-import uuid from "uuidv4";
+import { uuid } from "uuidv4";
 
 export const addCar = (driverName, lunch, notes) => {
 
@@ -17,20 +17,20 @@ export const addCar = (driverName, lunch, notes) => {
 };
 
 export const sort = (
-  draggableID,
+  draggableId,
   draggableType,
-  droppableStartID,
-  droppableEndID,
+  droppableStartId,
+  droppableEndId,
   droppableStartIndex,
   droppableEndIndex,
 ) => {
   return {
     type: CONSTANTS.DRAG_HAPPENED,
     payload: {
-      draggableID,
+      draggableId,
       draggableType,
-      droppableStartID,
-      droppableEndID,
+      droppableStartId,
+      droppableEndId,
       droppableStartIndex,
       droppableEndIndex,
     }

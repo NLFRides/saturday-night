@@ -1,6 +1,4 @@
-import {
-  CONSTANTS
-} from "../actions";
+import { CONSTANTS } from "../actions";
 
 const initialState = {
   "rider-0": {
@@ -27,7 +25,9 @@ const initialState = {
 };
 
 const ridersReducer = (state = initialState, action) => {
+  
   switch (action.type) {
+
     case CONSTANTS.ADD_RIDER: {
       const {
         id,
@@ -47,6 +47,7 @@ const ridersReducer = (state = initialState, action) => {
 
       return { ...state, [id]: newRider };
     }
+
     default:
       return state;
   }

@@ -16,19 +16,22 @@ const carsOrderReducer = (state = initialState, action) => {
 
     case CONSTANTS.DRAG_HAPPENED: {
       const {
-        draggableID,
+        draggableId,
         draggableType,
-        droppableStartID,
-        droppableEndID,
+        droppableStartId,
+        droppableEndId,
         droppableStartIndex,
         droppableEndIndex,
       } = action.payload;
 
       if (draggableType === "car") {
-        const newState = { ...state };
+        const newState = [ ...state ];
 
         const car = newState.splice(droppableStartIndex, 1);
         newState.splice(droppableEndIndex, 0, ...car);
+
+        console.log("spliced");
+
         return newState;
       } else {
         return state;

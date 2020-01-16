@@ -14,7 +14,7 @@ const initialState = {
     id: `car-${1}`,
     driverName: "Jeff Huang",
     lunch: 0,
-    riders: [`rider-${0}`],
+    riders: [`rider-${1}`],
     notes: "",
   },
 };
@@ -43,10 +43,10 @@ const carsReducer = (state = initialState, action) => {
 
     case CONSTANTS.DRAG_HAPPENED: {
       const {
-        draggableID,
+        draggableId,
         draggableType,
-        droppableStartID,
-        droppableEndID,
+        droppableStartId,
+        droppableEndId,
         droppableStartIndex,
         droppableEndIndex,
       } = action.payload;
@@ -58,9 +58,9 @@ const carsReducer = (state = initialState, action) => {
 
         const newState = { ...state };
 
-        const carStart = state[droppableStartID]
+        const carStart = state[droppableStartId]
         const rider = carStart.riders.splice(droppableStartIndex, 1);
-        const carEnd = state[droppableEndID]
+        const carEnd = state[droppableEndId]
         carEnd.riders.splice(droppableEndIndex, 0, ...rider);
         return newState;
       }

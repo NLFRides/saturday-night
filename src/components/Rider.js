@@ -11,11 +11,15 @@ const styles = {
   }
 }
 
-const handleDelete = () => {
-  console.info('You clicked the delete icon.');
+const handleClick = () => {
+  console.log("Clicked rider, edit")
 };
 
-const Rider = ({ index, riderID }) => {
+const handleDelete = () => {
+  console.log('You clicked the delete rider icon.');
+};
+
+const Rider = ({ index, riderId }) => {
 
   const ridersInfo = useSelector(state => state.ridersInfo);
 
@@ -25,16 +29,16 @@ const Rider = ({ index, riderID }) => {
     lunch,
     location,
     notes,
-  } = ridersInfo[riderID];
+  } = ridersInfo[riderId];
 
   const riderTooltip = `RIDER: ${name} | ${lunch} | ${location} | ${notes}`;
 
   return (
-    <Draggable draggableId={riderID} index={index}>
+    <Draggable draggableId={riderId} index={index}>
       {provided => (
         <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
           <Tooltip title={riderTooltip}>
-            <Chip style={styles.chip} label={ name } onDelete={ handleDelete } color="primary" />
+            <Chip style={styles.chip} label={ name } clickable="true" onClick={ handleClick } onDelete={ handleDelete } color="primary" />
           </Tooltip>
         </div>
       )}

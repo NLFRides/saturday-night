@@ -18,7 +18,7 @@ const styles = {
   }
 }
 
-const Car = ({ index, carID }) => {
+const Car = ({ index, carId }) => {
 
   const carsInfo = useSelector(state => state.carsInfo);
 
@@ -28,23 +28,23 @@ const Car = ({ index, carID }) => {
     lunch,
     riders,
     notes,
-  } = carsInfo[carID];
+  } = carsInfo[carId];
 
   const carTooltip = `CAR: ${driverName} | ${lunch} | ${notes}`;
 
   return (
-    <Draggable draggableId={carID} index={index}>
+    <Draggable draggableId={carId} index={index}>
       {provided => (
         <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-          <Droppable droppableId={carID} type="rider">
+          <Droppable droppableId={carId} type="rider">
             {provided => (
               <div style={ styles.container }>
                 <Tooltip title={carTooltip}>
                   <h2>{ driverName }</h2>
                 </Tooltip>
                 <div {...provided.droppableProps} ref={provided.innerRef} style={styles.riders} >
-                  { riders.map((riderID, index) => 
-                    <Rider key={riderID} riderID={riderID} index={index} ></Rider>) }
+                  { riders.map((riderId, index) => 
+                    <Rider key={riderId} riderId={riderId} index={index} ></Rider>) }
                   { provided.placeholder }
                 </div>
               </div>
