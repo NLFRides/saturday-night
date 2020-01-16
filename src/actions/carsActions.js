@@ -1,29 +1,38 @@
 import { CONSTANTS } from "../actions";
+import uuid from "uuidv4";
 
-export const addCar = ( driverName, lunch, notes ) => {
+export const addCar = (driverName, lunch, notes) => {
+
+  const id = uuid();
+
   return {
     type: CONSTANTS.ADD_CAR,
-    payload: { driverName, lunch, notes }
+    payload: {
+      id,
+      driverName,
+      lunch,
+      notes,
+    }
   };
 };
 
 export const sort = (
-  droppableIdStart,
-  droppableIdEnd,
-  droppableIndexStart,
-  droppableIndexEnd,
-  draggableId,
-  type,
+  draggableID,
+  draggableType,
+  droppableStartID,
+  droppableEndID,
+  droppableStartIndex,
+  droppableEndIndex,
 ) => {
   return {
     type: CONSTANTS.DRAG_HAPPENED,
     payload: {
-      droppableIdStart,
-      droppableIdEnd,
-      droppableIndexStart,
-      droppableIndexEnd,
-      draggableId,
-      type,
+      draggableID,
+      draggableType,
+      droppableStartID,
+      droppableEndID,
+      droppableStartIndex,
+      droppableEndIndex,
     }
   };
 };

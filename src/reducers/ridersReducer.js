@@ -1,4 +1,6 @@
-import { CONSTANTS } from "../actions";
+import {
+  CONSTANTS
+} from "../actions";
 
 const initialState = {
   "rider-0": {
@@ -32,6 +34,27 @@ const initialState = {
 };
 
 const ridersReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case CONSTANTS.ADD_RIDER: {
+      const {
+        id,
+        riderName,
+        lunch,
+        location,
+        notes
+      } = action.payload
+
+      const newRider = {
+        id: id,
+        name: riderName,
+        lunch: lunch,
+        location: location,
+        notes: notes,
+      };
+
+      return { ...state, [id]: newRider };
+    }
+  }
 };
 
 export default ridersReducer;
