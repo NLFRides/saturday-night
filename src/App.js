@@ -1,27 +1,15 @@
 import React from "react";
-import "./App.css";
-import AddButton from "./components/AddButton";
-import { DragDropContext } from "react-beautiful-dnd";
-import { useDispatch, useSelector } from "react-redux";
-import { sort } from "./actions";
-import { Droppable } from "react-beautiful-dnd";
-import SplitPane from "react-split-pane";
-import Car from "./components/Car";
 
-const styles = {
-  header: {
-    display: "flex",
-    flexDirection: "row",
-  },
-  carsGrid: {
-    display: "flex",
-    flexDirection: "row"
-  }
-}
+import { useDispatch } from "react-redux";
+import { sort } from "./actions";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import SplitPane from "react-split-pane";
+import Header from "./components/Header";
+import CarsGrid from "./components/CarsGrid";
+import UnassignedRidersGrid from "./components/UnassignedRidersGrid";
 
 function App() { 
 
-  const carsOrder = useSelector(state => state.carsOrder);
   const dispatch = useDispatch();
   
   const onDragEnd = (result) => {
@@ -44,28 +32,20 @@ function App() {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div>
-        <div style={styles.header}>
-          <AddButton type="car"></AddButton>
-          <AddButton type="rider"></AddButton>
+        <div>
+          <Header/>
         </div>
-        <Droppable droppableId="all-cars" direction="horizontal" type="car">
-          {provided => (
-            <div {...provided.droppableProps} ref={provided.innerRef} style={styles.carsGrid}>
-              <div><h2>Test</h2></div>
-              <SplitPane split="vertical" minSize={300} defaultSize={500}>
-                <div />
-                <div />
-              </SplitPane>
-              { carsOrder.map((carId, index) => 
-                <Car 
-                  key={carId} 
-                  index={index}
-                  carId={carId} 
-                  />) }
-              {provided.placeholder}
+        <div>
+          <SplitPane allowResize={false} split="vertical" minSize={300} defaultSize={400}>
+            <div>
+              {/* Eventaully, move headers into here. prob make components called ridersHeader and carsHeader, maybe masterHeader idk */}
+              <UnassignedRidersGrid/>
             </div>
-          )}
-        </Droppable>
+            <div >
+              <CarsGrid/>
+            </div>
+          </SplitPane>
+        </div>
       </div>
     </DragDropContext>
   )
