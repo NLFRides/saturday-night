@@ -29,7 +29,7 @@ const unassignedRidersReducer = (state = initialState, action) => {
       } else {
         const startUnassigned = droppableStartId === UNASSIGNED_RIDERS_GRID_ID;
         const endUnassigned = droppableEndId === UNASSIGNED_RIDERS_GRID_ID;
-
+        
         if (startUnassigned && endUnassigned) {
           const newState = [ ...state ];
           const rider = newState.splice(droppableStartIndex, 1);
@@ -41,7 +41,7 @@ const unassignedRidersReducer = (state = initialState, action) => {
           return newState;
         } else if (endUnassigned) {
           const newState = [ ...state ];
-          newState.splice(droppableEndIndex, 0, ...draggableId);
+          newState.splice(droppableEndIndex, 0, draggableId);
           return newState;
         } else {
           return state;

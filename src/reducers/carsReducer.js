@@ -62,20 +62,20 @@ const carsReducer = (state = initialState, action) => {
           return state;
         } else if (startUnassigned) {
           const newState = { ...state };
-          const carEnd = state[droppableEndId];
-          carEnd.riders.splice(droppableStartIndex, 0, ...draggableId);
+          const carEnd = newState[droppableEndId];
+          carEnd.riders.splice(droppableEndIndex, 0, draggableId);
           return newState;
         } else if (endUnassigned) {
           const newState = { ...state };
-          const carStart = state[droppableStartId];
+          const carStart = newState[droppableStartId];
           carStart.riders.splice(droppableStartIndex, 1);
           return newState;
         } else {
           const newState = { ...state };
 
-          const carStart = state[droppableStartId];
+          const carStart = newState[droppableStartId];
           const rider = carStart.riders.splice(droppableStartIndex, 1);
-          const carEnd = state[droppableEndId];
+          const carEnd = newState[droppableEndId];
           carEnd.riders.splice(droppableEndIndex, 0, ...rider);
           return newState;
         }
