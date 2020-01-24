@@ -4,6 +4,8 @@ import Tooltip from '@material-ui/core/Tooltip';
 import { useSelector } from "react-redux";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 
+import { RIDER_TYPE } from "../constants";
+
 const styles = {
   container: {
     backgroundColor: "#ccc",
@@ -36,7 +38,7 @@ const Car = ({ index, carId }) => {
     <Draggable draggableId={carId} index={index}>
       {provided => (
         <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-          <Droppable droppableId={carId} type="rider">
+          <Droppable droppableId={carId} type={RIDER_TYPE}>
             {provided => (
               <div style={ styles.container }>
                 <Tooltip title={carTooltip}>

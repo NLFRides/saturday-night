@@ -22,6 +22,13 @@ const initialState = {
     location: "N",
     notes: "Nathan Notes",
   },
+  "rider-3": {
+    id: `rider-${3}`,
+    name: "Tiktok",
+    lunch: 1,
+    location: "S",
+    notes: "Tiktok Notes",
+  },
 };
 
 const ridersReducer = (state = initialState, action) => {

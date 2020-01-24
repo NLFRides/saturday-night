@@ -1,4 +1,5 @@
 import { CONSTANTS } from "../actions";
+import { CAR_TYPE } from "../constants";
 
 const initialState = [
   `car-${1}`, `car-${0}`,
@@ -24,13 +25,11 @@ const carsOrderReducer = (state = initialState, action) => {
         droppableEndIndex,
       } = action.payload;
 
-      if (draggableType === "car") {
+      if (draggableType === CAR_TYPE) {
         const newState = [ ...state ];
 
         const car = newState.splice(droppableStartIndex, 1);
         newState.splice(droppableEndIndex, 0, ...car);
-
-        console.log("spliced");
 
         return newState;
       } else {

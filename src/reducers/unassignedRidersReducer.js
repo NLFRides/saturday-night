@@ -1,7 +1,8 @@
 import { CONSTANTS } from "../actions";
+import { CAR_TYPE, UNASSIGNED_RIDERS_GRID_ID } from "../constants";
 
 const initialState = [
-  "rider-2"
+  "rider-2", "rider-3",
 ];
 
 const unassignedRidersReducer = (state = initialState, action) => {
@@ -23,10 +24,28 @@ const unassignedRidersReducer = (state = initialState, action) => {
         droppableEndIndex,
       } = action.payload;
 
-      if (draggableType === "car") {
+      if (draggableType === CAR_TYPE) {
         return state;
       } else {
-        return state;
+        const startUnassigned = droppableStartId === UNASSIGNED_RIDERS_GRID_ID;
+        const endUnassigned = droppableEndId === UNASSIGNED_RIDERS_GRID_ID;
+
+        if (startUnassigned && endUnassigned) {
+          const newState = [ ...state ];
+          const rider = newState.splice(droppableStartIndex, 1);
+          newState.splice(droppableEndIndex, 0, ...rider);
+          return newState;
+        } else if (startUnassigned) {
+          const newState = [ ...state ];
+          newState.splice(droppableStartIndex, 1);
+          return newState;
+        } else if (endUnassigned) {
+          const newState = [ ...state ];
+          newState.splice(droppableEndIndex, 0, ...draggableId);
+          return newState;
+        } else {
+          return state;
+        }
       }
 
     }
