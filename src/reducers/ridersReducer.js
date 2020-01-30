@@ -55,6 +55,14 @@ const ridersReducer = (state = initialState, action) => {
       return { ...state, [id]: newRider };
     }
 
+    case CONSTANTS.DELETE_RIDER: {
+      const id = action.payload.id
+
+      const newState = { ...state }
+      delete newState[id];
+      return newState;
+    }
+
     default:
       return state;
   }

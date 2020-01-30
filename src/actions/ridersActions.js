@@ -16,3 +16,13 @@ export const addRider = (name, lunch, location, notes) => {
     }
   };
 };
+
+export const deleteRider = (id) => {
+
+  return {
+    type: CONSTANTS.DELETE_RIDER,
+    payload: {
+      id,
+    }
+  };
+};

@@ -1,8 +1,10 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Chip from '@material-ui/core/Chip';
 import Tooltip from '@material-ui/core/Tooltip';
 import { Draggable } from "react-beautiful-dnd";
+
+import { deleteRider } from "../actions";
 
 const styles = {
   chip: {
@@ -11,15 +13,18 @@ const styles = {
   }
 }
 
-const handleClick = () => {
-  console.log("Clicked rider, edit")
-};
-
-const handleDelete = () => {
-  console.log('You clicked the delete rider icon.');
-};
-
 const Rider = ({ index, riderId }) => {
+
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    console.log("Clicked rider, edit")
+  };
+  
+
+  const handleDelete = () => {
+    dispatch(deleteRider(riderId));
+  };
 
   const ridersInfo = useSelector(state => state.ridersInfo);
 

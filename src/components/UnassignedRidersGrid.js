@@ -52,7 +52,6 @@ const UnassignedRidersGrid = () => {
             {/* <List> */}
               { unassignedRiders.map((riderId, index) => 
                 <Grid item xs>
-                  
                 
                 <Rider 
                   key={riderId} 
