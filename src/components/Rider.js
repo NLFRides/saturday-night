@@ -52,8 +52,7 @@ const Rider = ({ index, riderId }) => {
       case SOUTH: return styles.southRider;
       case NORTH: return styles.northRider;
       case OC: return styles.ocRider;
-    }
-  })
+    }});
   const riderStyle = riderStyles(location);
 
   const riderTooltip = `RIDER: ${name} | ${lunch} | ${location} | ${notes}`;

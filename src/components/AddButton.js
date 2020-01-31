@@ -4,7 +4,12 @@ import Modal from '@material-ui/core/Modal';
 import AddForm from "./AddForm";
 
 const styles = {
-  button: {
+  riderButton: {
+    backgroundColor: "#7ec0ee",
+    margin: 4
+  },
+  carButton: {
+    backgroundColor: "#ccc",
     margin: 4
   },
 }
@@ -12,7 +17,7 @@ const styles = {
 const AddButton = ({ type }) => {
 
   const buttonText = (type === "car")? "Add Car" : "Add Rider";
-  const buttonColor = (type === "car")? "default" : "primary";
+  const buttonStyle = (type === "car")? styles.carButton : styles.riderButton;
   
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
@@ -24,7 +29,7 @@ const AddButton = ({ type }) => {
 
   return (
     <div>
-      <Button style={styles.button} variant="contained" onClick={handleOpen} color={buttonColor}>
+      <Button style={ buttonStyle } variant="contained" onClick={handleOpen}>
         {buttonText}
       </Button>
       <Modal

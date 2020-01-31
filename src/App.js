@@ -28,7 +28,7 @@ function App() {
       );
     }
   }
-
+  
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div>

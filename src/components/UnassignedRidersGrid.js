@@ -10,6 +10,7 @@ import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles(theme => ({
   root: {
+    padding: 8,
     flexGrow: 1,
   },
   paper: {
@@ -26,7 +27,7 @@ const UnassignedRidersGrid = () => {
   const unassignedRiders = useSelector(state => state.unassignedRiders);
 
   return (
-    <Droppable droppableId={UNASSIGNED_RIDERS_GRID_ID} direction="vertical" type={RIDER_TYPE}>
+    <Droppable droppableId={UNASSIGNED_RIDERS_GRID_ID} direction="horizontal" type={RIDER_TYPE}>
       {provided => (
         <div {...provided.droppableProps} ref={provided.innerRef} >
           <Grid className={classes.root} container spacing={3} container justify="center" >
