@@ -54,9 +54,13 @@ const unassignedRidersReducer = (state = initialState, action) => {
       const riderId = action.payload.id;
       const newState = [ ...state ];
       
-      // const riderIndex = newState.indexOf(riderId);
-      // console.log(riderIndex);
-      // newState.splice(riderIndex, 1);
+      const riderIndex = newState.indexOf(riderId);
+
+      if (riderIndex === -1) {
+        return newState;
+      }
+
+      newState.splice(riderIndex, 1);
 
       return newState;
     }

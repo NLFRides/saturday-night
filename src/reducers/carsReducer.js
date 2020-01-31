@@ -87,6 +87,11 @@ const carsReducer = (state = initialState, action) => {
       const newState = { ...state };
       
       const car = Object.keys(newState).find(car => newState[car].riders.includes(riderId));
+
+      if (car === undefined) {
+        return newState;
+      }
+
       const riderIndex = newState[car].riders.indexOf(riderId);
       newState[car].riders.splice(riderIndex, 1);
 
