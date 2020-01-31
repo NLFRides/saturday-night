@@ -21,7 +21,6 @@ const Rider = ({ index, riderId }) => {
     console.log("Clicked rider, edit")
   };
   
-
   const handleDelete = () => {
     dispatch(deleteRider(riderId));
   };

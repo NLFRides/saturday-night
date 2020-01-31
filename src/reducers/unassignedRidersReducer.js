@@ -50,6 +50,17 @@ const unassignedRidersReducer = (state = initialState, action) => {
 
     }
 
+    case CONSTANTS.DELETE_RIDER: {
+      const riderId = action.payload.id;
+      const newState = [ ...state ];
+      
+      // const riderIndex = newState.indexOf(riderId);
+      // console.log(riderIndex);
+      // newState.splice(riderIndex, 1);
+
+      return newState;
+    }
+
     default:
       return state;
   }

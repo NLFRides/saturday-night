@@ -63,7 +63,7 @@ const UnassignedRidersGrid = () => {
               }
             {/* </List> */}
           </Grid>
-          {/* {provided.placeholder} */}
+          {provided.placeholder}
         </div>
       )}
 

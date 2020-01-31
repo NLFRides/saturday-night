@@ -82,6 +82,17 @@ const carsReducer = (state = initialState, action) => {
       }
     }
 
+    case CONSTANTS.DELETE_RIDER: {
+      const riderId = action.payload.id;
+      const newState = { ...state };
+      
+      const car = Object.keys(newState).find(car => newState[car].riders.includes(riderId));
+      const riderIndex = newState[car].riders.indexOf(riderId);
+      newState[car].riders.splice(riderIndex, 1);
+
+      return newState;
+    }
+
     default:
       return state;
   }
