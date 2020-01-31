@@ -2,7 +2,7 @@ import React from "react";
 
 import { useDispatch } from "react-redux";
 import { sort } from "./actions";
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { DragDropContext } from "react-beautiful-dnd";
 import SplitPane from "react-split-pane";
 import Header from "./components/Header";
 import CarsGrid from "./components/CarsGrid";
@@ -36,7 +36,7 @@ function App() {
           <Header/>
         </div>
         <div>
-          <SplitPane allowResize={false} split="vertical" minSize={300} defaultSize={400} style={{backgroundColor: '#7ec0ee'}}>
+          <SplitPane allowResize={false} split="vertical" minSize={300} defaultSize={400} style={{backgroundColor: '#d8ecf9'}}>
             <div>
               {/* Eventaully, move headers into here. prob make components called ridersHeader and carsHeader, maybe masterHeader idk */}
               <UnassignedRidersGrid/>

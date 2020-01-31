@@ -1,6 +1,7 @@
 import React from "react";
 import Rider from "./Rider"
 import Tooltip from '@material-ui/core/Tooltip';
+import Paper from '@material-ui/core/Paper';
 import { useSelector } from "react-redux";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 

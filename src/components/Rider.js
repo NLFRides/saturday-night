@@ -3,14 +3,26 @@ import { useSelector, useDispatch } from "react-redux";
 import Chip from '@material-ui/core/Chip';
 import Tooltip from '@material-ui/core/Tooltip';
 import { Draggable } from "react-beautiful-dnd";
+import { SOUTH, NORTH, OC } from "../constants";
 
 import { deleteRider } from "../actions";
 
 const styles = {
-  chip: {
+  southRider: {
     marginTop: 4,
-    marginBottom: 4
-  }
+    marginBottom: 4,
+    backgroundColor: "#7ec0ee",
+  },
+  northRider: {
+    marginTop: 4,
+    marginBottom: 4,
+    backgroundColor: "#a8e4a0",
+  },
+  ocRider: {
+    marginTop: 4,
+    marginBottom: 4,
+    backgroundColor: "#a6a6a6",
+  },
 }
 
 const Rider = ({ index, riderId }) => {
@@ -35,6 +47,15 @@ const Rider = ({ index, riderId }) => {
     notes,
   } = ridersInfo[riderId];
 
+  const riderStyles = (function(location) {
+    switch(location) {
+      case SOUTH: return styles.southRider;
+      case NORTH: return styles.northRider;
+      case OC: return styles.ocRider;
+    }
+  })
+  const riderStyle = riderStyles(location);
+
   const riderTooltip = `RIDER: ${name} | ${lunch} | ${location} | ${notes}`;
 
   return (
@@ -42,7 +63,13 @@ const Rider = ({ index, riderId }) => {
       {provided => (
         <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
           <Tooltip title={riderTooltip}>
-            <Chip style={styles.chip} label={ name } clickable="true" onClick={ handleClick } onDelete={ handleDelete } color="primary" />
+            <Chip
+              style={ riderStyle }
+              label={ name }
+              clickable="true"
+              onClick={ handleClick }
+              onDelete={ handleDelete }
+              />
           </Tooltip>
         </div>
       )}
