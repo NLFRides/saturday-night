@@ -30,7 +30,7 @@ const UnassignedRidersGrid = () => {
     <Droppable droppableId={UNASSIGNED_RIDERS_GRID_ID} direction="horizontal" type={RIDER_TYPE}>
       {provided => (
         <div {...provided.droppableProps} ref={provided.innerRef} >
-          <Grid className={classes.root} container spacing={3} container justify="center" >
+          <Grid className={classes.root} container spacing={3} justify="center" >
             { unassignedRiders.map((riderId, index) => 
               <Grid key={riderId} item xs>
                 <Rider
