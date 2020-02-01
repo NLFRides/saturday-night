@@ -1,5 +1,9 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
+import ReactFileReader from 'react-file-reader';
+import { useDispatch } from "react-redux";
+import { addCar, addRider } from "../actions";
+import Papa from 'papaparse';
 
 const styles = {
   button: {
@@ -11,15 +15,26 @@ const styles = {
 
 const UploadButton = () => {
 
-  const handleClick = () => {
-    
+  const dispatch = useDispatch();
+
+  const handleFiles = files => {
+    Papa.parse(files[0], {
+      complete: function(results) {
+        console.log(results.data);
+      }
+    });
+
+    // dispatch(deleteRider(riderId));
   }
 
   return (
     <div>
-      <Button style={styles.button} variant="contained" onClick={handleClick}>
-        Upload
-      </Button>
+      {/* <input type='file' id='choose' /> */}
+      <ReactFileReader handleFiles={handleFiles} fileTypes={'.csv'}>
+        <Button style={styles.button} variant="contained">
+          Upload
+        </Button>
+      </ReactFileReader>
     </div>
   );
 };

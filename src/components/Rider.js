@@ -4,7 +4,6 @@ import Chip from '@material-ui/core/Chip';
 import Tooltip from '@material-ui/core/Tooltip';
 import { Draggable } from "react-beautiful-dnd";
 import { SOUTH, NORTH, OC } from "../constants";
-
 import { deleteRider } from "../actions";
 
 const styles = {
@@ -65,7 +64,7 @@ const Rider = ({ index, riderId }) => {
             <Chip
               style={ riderStyle }
               label={ name }
-              clickable="true"
+              clickable={ true }
               onClick={ handleClick }
               onDelete={ handleDelete }
               />

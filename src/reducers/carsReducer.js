@@ -15,7 +15,9 @@ const initialState = {
     id: `car-${1}`,
     driverName: "Jeff Huang",
     lunch: 0,
-    riders: [`rider-${1}`],
+    riders: [
+      `rider-${1}`
+    ],
     notes: "",
   },
 };

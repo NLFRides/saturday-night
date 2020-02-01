@@ -32,8 +32,8 @@ const UnassignedRidersGrid = () => {
         <div {...provided.droppableProps} ref={provided.innerRef} >
           <Grid className={classes.root} container spacing={3} container justify="center" >
             { unassignedRiders.map((riderId, index) => 
-              <Grid item xs>
-                <Rider 
+              <Grid key={riderId} item xs>
+                <Rider
                   key={riderId} 
                   index={index}
                   riderId={riderId} />
