@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import ReactFileReader from 'react-file-reader';
 import { useDispatch } from "react-redux";
-import { addCar, addRider } from "../actions";
+import { addCar, addRider, clear } from "../actions";
 import Papa from 'papaparse';
 import { SOUTH, NORTH, OC } from "../constants";
 
@@ -21,6 +21,9 @@ const UploadButton = () => {
   const handleFiles = files => {
     Papa.parse(files[0], {
       complete: function(results) {
+
+        dispatch(clear());
+
         const [first, ...rest] = results.data;
         rest.map(entry => {
           const [timestamp, name, firstTime, hc, rawLocation, time, driver, additionalInfo, afterChurchPlans] = entry;

@@ -25,6 +25,10 @@ const initialState = {
 const carsReducer = (state = initialState, action) => {
   switch (action.type) {
 
+    case CONSTANTS.CLEAR: {
+      return {};
+    }
+
     case CONSTANTS.ADD_CAR: {
       const {
         id,

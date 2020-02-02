@@ -8,6 +8,10 @@ const initialState = [
 const unassignedRidersReducer = (state = initialState, action) => {
   switch (action.type) {
 
+    case CONSTANTS.CLEAR: {
+      return [];
+    }
+
     case CONSTANTS.ADD_RIDER: {
       const { id } = action.payload
 

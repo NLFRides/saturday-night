@@ -9,6 +9,10 @@ const carsOrderReducer = (state = initialState, action) => {
 
   switch (action.type) {
 
+    case CONSTANTS.CLEAR: {
+      return [];
+    }
+    
     case CONSTANTS.ADD_CAR: {
       const { id } = action.payload;
 

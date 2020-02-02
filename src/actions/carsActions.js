@@ -16,23 +16,3 @@ export const addCar = (driverName, lunch, notes) => {
   };
 };
 
-export const sort = (
-  draggableId,
-  draggableType,
-  droppableStartId,
-  droppableEndId,
-  droppableStartIndex,
-  droppableEndIndex,
-) => {
-  return {
-    type: CONSTANTS.DRAG_HAPPENED,
-    payload: {
-      draggableId,
-      draggableType,
-      droppableStartId,
-      droppableEndId,
-      droppableStartIndex,
-      droppableEndIndex,
-    }
-  };
-};
