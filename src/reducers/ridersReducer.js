@@ -1,44 +1,21 @@
 import { CONSTANTS } from "../actions";
 import { SOUTH, NORTH, OC } from "../constants";
 
-const initialState = {
-  "rider-0": {
-    id: `rider-${0}`,
-    name: "Jabon",
-    lunch: 0,
-    location: SOUTH,
-    notes: "Jabon Notes",
-  },
-  "rider-1": {
-    id: `rider-${1}`,
-    name: "Jefferson",
-    lunch: 1,
-    location: NORTH,
-    notes: "Jefferson Notes",
-  },
-  "rider-2": {
-    id: `rider-${2}`,
-    name: "Nathan",
-    lunch: 1,
-    location: NORTH,
-    notes: "Nathan Notes",
-  },
-  "rider-3": {
-    id: `rider-${3}`,
-    name: "Tiktok",
-    lunch: 1,
-    location: OC,
-    notes: "Tiktok Notes",
-  },
-};
+// {
+//   "rider-0": {
+//     id: `rider-${0}`,
+//     name: "Jabon",
+//     lunch: 0,
+//     location: SOUTH,
+//     notes: "Jabon Notes",
+//   },
+// };
+
+const initialState = {};
 
 const ridersReducer = (state = initialState, action) => {
   
   switch (action.type) {
-
-    case CONSTANTS.CLEAR: {
-      return {};
-    }
 
     case CONSTANTS.ADD_RIDER: {
       const {

@@ -1,16 +1,11 @@
 import { CONSTANTS } from "../actions";
 import { CAR_TYPE, UNASSIGNED_RIDERS_GRID_ID } from "../constants";
 
-const initialState = [
-  "rider-2", "rider-3",
-];
+// [ "rider-2", "rider-3", ];
+const initialState = [];
 
 const unassignedRidersReducer = (state = initialState, action) => {
   switch (action.type) {
-
-    case CONSTANTS.CLEAR: {
-      return [];
-    }
 
     case CONSTANTS.ADD_RIDER: {
       const { id } = action.payload

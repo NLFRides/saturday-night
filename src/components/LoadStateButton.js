@@ -2,6 +2,7 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import ReactFileReader from 'react-file-reader';
 import { useDispatch } from "react-redux";
+import { load } from "../actions";
 
 const styles = {
   button: {
@@ -15,13 +16,12 @@ const LoadStateButton = () => {
 
   const fileReader = new FileReader();
   fileReader.onload = (event) => {
-    console.log(JSON.parse(event.target.result));
+    dispatch(load(JSON.parse(event.target.result)));
   };
 
   const dispatch = useDispatch();
 
   const handleFiles = files => {
-
     fileReader.readAsText(files[0]);
   }
 

@@ -6,6 +6,13 @@ export const clear = () => {
   }
 }
 
+export const load = (state) => {
+  return {
+    type: CONSTANTS.LOAD,
+    payload: state,
+  };
+}
+
 export const sort = (
   draggableId,
   draggableType,

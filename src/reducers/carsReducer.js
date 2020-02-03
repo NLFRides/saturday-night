@@ -1,33 +1,22 @@
 import { CONSTANTS } from "../actions";
 import { CAR_TYPE, UNASSIGNED_RIDERS_GRID_ID } from "../constants";
 
-const initialState = {
-  "car-0": {
-    id: `car-${0}`,
-    driverName: "Jason Huang",
-    lunch: 0,
-    riders: [
-      `rider-${0}`
-    ],
-    notes: "",
-  },
-  "car-1": {
-    id: `car-${1}`,
-    driverName: "Jeff Huang",
-    lunch: 0,
-    riders: [
-      `rider-${1}`
-    ],
-    notes: "",
-  },
-};
+// {
+//   "car-0": {
+//     id: `car-${0}`,
+//     driverName: "Jason Huang",
+//     lunch: 0,
+//     riders: [
+//       `rider-${0}`
+//     ],
+//     notes: "",
+//   },
+// };
+
+const initialState = {};
 
 const carsReducer = (state = initialState, action) => {
   switch (action.type) {
-
-    case CONSTANTS.CLEAR: {
-      return {};
-    }
 
     case CONSTANTS.ADD_CAR: {
       const {

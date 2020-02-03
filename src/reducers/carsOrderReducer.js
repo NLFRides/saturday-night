@@ -1,17 +1,12 @@
 import { CONSTANTS } from "../actions";
 import { CAR_TYPE } from "../constants";
 
-const initialState = [
-  `car-${1}`, `car-${0}`,
-];
+// [`car-${1}`, `car-${0}`,]
+const initialState = [];
 
 const carsOrderReducer = (state = initialState, action) => {
 
   switch (action.type) {
-
-    case CONSTANTS.CLEAR: {
-      return [];
-    }
     
     case CONSTANTS.ADD_CAR: {
       const { id } = action.payload;
