@@ -45,7 +45,6 @@ const UploadSubmissionsButton = () => {
 
   return (
     <div>
-      {/* <input type='file' id='choose' /> */}
       <ReactFileReader handleFiles={handleFiles} fileTypes={'.csv'}>
         <Button style={styles.button} variant="contained">
           Upload Submissions
