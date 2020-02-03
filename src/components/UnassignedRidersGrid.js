@@ -10,7 +10,6 @@ import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    overflowY: 'scroll',
     padding: 8,
     flexGrow: 1,
   },

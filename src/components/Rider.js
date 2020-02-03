@@ -1,28 +1,19 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Chip from '@material-ui/core/Chip';
-import Tooltip from '@material-ui/core/Tooltip';
+import { Container } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 import { Draggable } from "react-beautiful-dnd";
 import { SOUTH, NORTH, OC } from "../constants";
 import { deleteRider } from "../actions";
+import { MyToolTip } from "./ToolTip";
 
-const styles = {
-  southRider: {
-    marginTop: 2,
-    marginBottom: 2,
-    backgroundColor: "#7ec0ee",
+const useStyles = makeStyles({
+  root: {
+    width: 150,
+    margin: 1,
+    backgroundColor: props => props.backgroundColor,
   },
-  northRider: {
-    marginTop: 2,
-    marginBottom: 2,
-    backgroundColor: "#a8e4a0",
-  },
-  ocRider: {
-    marginTop: 2,
-    marginBottom: 2,
-    backgroundColor: "#a6a6a6",
-  },
-}
+});
 
 const Rider = ({ index, riderId }) => {
 
@@ -33,6 +24,7 @@ const Rider = ({ index, riderId }) => {
   };
   
   const handleDelete = () => {
+    // MOVE THIS INTO A DRAG -> appearing trash can component
     dispatch(deleteRider(riderId));
   };
 
@@ -46,29 +38,31 @@ const Rider = ({ index, riderId }) => {
     notes,
   } = ridersInfo[riderId];
 
-  const riderStyles = (function(location) {
+  const locationColor = (function(location) {
     switch(location) {
-      case SOUTH: return styles.southRider;
-      case NORTH: return styles.northRider;
-      case OC: return styles.ocRider;
+      case SOUTH: return "#7ec0ee";
+      case NORTH: return "#a8e4a0";
+      case OC: return "#a6a6a6";
     }});
-  const riderStyle = riderStyles(location);
 
-  const riderTooltip = `RIDER: ${name} | ${lunch} | ${location} | ${notes}`;
+  const classes = useStyles({"backgroundColor": locationColor(location)});
+
+  const riderTooltip = notes;
 
   return (
     <Draggable draggableId={riderId} index={index}>
       {provided => (
         <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-          <Tooltip title={riderTooltip}>
-            <Chip
-              style={ riderStyle }
+          <MyToolTip title={riderTooltip}>
+            <Container>
+              {name}
+            </Container>
+              {/* className={classes.root}
               label={ name }
               clickable={ true }
               onClick={ handleClick }
-              onDelete={ handleDelete }
-              />
-          </Tooltip>
+              /> */}
+          </MyToolTip>
         </div>
       )}
     </Draggable>

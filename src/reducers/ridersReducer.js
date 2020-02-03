@@ -11,7 +11,15 @@ import { SOUTH, NORTH, OC } from "../constants";
 //   },
 // };
 
-const initialState = {};
+const initialState = {
+  "rider-0": {
+    id: `rider-${0}`,
+    name: "Jabon",
+    lunch: 0,
+    location: SOUTH,
+    notes: "Jabon Notes",
+  },
+};
 
 const ridersReducer = (state = initialState, action) => {
   

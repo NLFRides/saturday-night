@@ -3,7 +3,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Droppable } from "react-beautiful-dnd";
 import { CARS_GRID_ID, CAR_TYPE } from "../constants";
-
 import Car from "./Car";
 
 const styles = {

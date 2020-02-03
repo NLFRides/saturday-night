@@ -36,7 +36,7 @@ function App() {
           <Header/>
         </div>
         <div>
-          <SplitPane allowResize={false} split="vertical" minSize={300} defaultSize={400} style={{backgroundColor: '#d8ecf9'}}>
+          <SplitPane allowResize={false} split="vertical" minSize={300} defaultSize={300} style={{backgroundColor: '#d8ecf9'}}>
             <div>
               {/* Eventaully, move headers into here. prob make components called ridersHeader and carsHeader, maybe masterHeader idk */}
               <UnassignedRidersGrid/>

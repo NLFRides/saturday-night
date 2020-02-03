@@ -2,7 +2,7 @@ import { CONSTANTS } from "../actions";
 import { CAR_TYPE, UNASSIGNED_RIDERS_GRID_ID } from "../constants";
 
 // [ "rider-2", "rider-3", ];
-const initialState = [];
+const initialState = ["rider-0"];
 
 const unassignedRidersReducer = (state = initialState, action) => {
   switch (action.type) {
