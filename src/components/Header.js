@@ -1,7 +1,9 @@
 import React from "react";
 
 import AddButton from "./AddButton";
-import UploadButton from "./UploadButton";
+import UploadSubmissionsButton from "./UploadSubmissionsButton";
+import SaveStateButton from "./SaveStateButton";
+import LoadStateButton from "./LoadStateButton";
 
 const styles = {
   header: {
@@ -17,9 +19,12 @@ const Header = () => {
     <div style={styles.header}>
       <AddButton type="car"></AddButton>
       <AddButton type="rider"></AddButton>
-      <UploadButton></UploadButton>
+      <UploadSubmissionsButton/>
+      <SaveStateButton/>
+      <LoadStateButton/>
     </div>
   )
+
 };
 
 export default Header;

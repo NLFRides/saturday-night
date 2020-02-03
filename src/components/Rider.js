@@ -8,18 +8,18 @@ import { deleteRider } from "../actions";
 
 const styles = {
   southRider: {
-    marginTop: 4,
-    marginBottom: 4,
+    marginTop: 2,
+    marginBottom: 2,
     backgroundColor: "#7ec0ee",
   },
   northRider: {
-    marginTop: 4,
-    marginBottom: 4,
+    marginTop: 2,
+    marginBottom: 2,
     backgroundColor: "#a8e4a0",
   },
   ocRider: {
-    marginTop: 4,
-    marginBottom: 4,
+    marginTop: 2,
+    marginBottom: 2,
     backgroundColor: "#a6a6a6",
   },
 }

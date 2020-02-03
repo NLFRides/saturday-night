@@ -26,3 +26,14 @@ export const deleteRider = (id) => {
     }
   };
 };
+
+export const sortRiders = (category) => {
+
+  return {
+    type: CONSTANTS.DELETE_RIDER,
+    payload: {
+
+    }
+  }
+
+}

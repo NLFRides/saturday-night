@@ -14,7 +14,7 @@ const styles = {
   },
 }
 
-const UploadButton = () => {
+const LoadStateButton = () => {
 
   const dispatch = useDispatch();
 
@@ -48,11 +48,11 @@ const UploadButton = () => {
       {/* <input type='file' id='choose' /> */}
       <ReactFileReader handleFiles={handleFiles} fileTypes={'.csv'}>
         <Button style={styles.button} variant="contained">
-          Upload
+          Load State
         </Button>
       </ReactFileReader>
     </div>
   );
 };
 
-export default UploadButton;
+export default LoadStateButton;
