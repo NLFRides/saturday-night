@@ -11,11 +11,21 @@ import { MyToolTip } from "./ToolTip";
 
 const useStyles = makeStyles({
   root: {
-    width: 150,
+    justifyContent: "left",
+    width: 180,
     margin: 1,
     backgroundColor: props => props.backgroundColor,
   },
 });
+
+const styles = {
+  root: {
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis", 
+    display: "block"
+  }
+}
 
 const Rider = ({ index, riderId }) => {
 
@@ -57,6 +67,15 @@ const Rider = ({ index, riderId }) => {
   // })
   const lunchPlans = <HomeIcon/>;
 
+  const riderRender = (
+    <div>
+      <div style={styles.root}>
+        1asdfasdf2asdfasdf3asdfasdf4asdfasdf5
+      </div>
+      {lunchPlans}
+    </div>
+  )
+
   const riderTooltip = notes;
 
   return (
@@ -66,11 +85,9 @@ const Rider = ({ index, riderId }) => {
           <MyToolTip title={riderTooltip}>
             <Chip
               className={classes.root}
-              label={ name }
+              label={ riderRender }
               clickable={ true }
               onClick={ handleClick }
-              variant={ (notes)? "outlined" : "default" }
-              icon = {lunchPlans}
               />
           </MyToolTip>
         </div>
