@@ -1,6 +1,8 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Container } from '@material-ui/core';
+import HomeIcon from '@material-ui/icons/Home';
+import FastfoodIcon from '@material-ui/icons/Fastfood';
+import Chip from '@material-ui/core/Chip';
 import { makeStyles } from '@material-ui/core';
 import { Draggable } from "react-beautiful-dnd";
 import { SOUTH, NORTH, OC } from "../constants";
@@ -44,8 +46,16 @@ const Rider = ({ index, riderId }) => {
       case NORTH: return "#a8e4a0";
       case OC: return "#a6a6a6";
     }});
-
   const classes = useStyles({"backgroundColor": locationColor(location)});
+
+  // const lunchPlans = (function(location) {
+  //   switch(lunch) {
+  //     case LUNCH:
+  //     case HOME:
+  //     default: undefined
+  //   }
+  // })
+  const lunchPlans = <HomeIcon/>;
 
   const riderTooltip = notes;
 
@@ -54,14 +64,14 @@ const Rider = ({ index, riderId }) => {
       {provided => (
         <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
           <MyToolTip title={riderTooltip}>
-            <Container>
-              {name}
-            </Container>
-              {/* className={classes.root}
+            <Chip
+              className={classes.root}
               label={ name }
               clickable={ true }
               onClick={ handleClick }
-              /> */}
+              variant={ (notes)? "outlined" : "default" }
+              icon = {lunchPlans}
+              />
           </MyToolTip>
         </div>
       )}
