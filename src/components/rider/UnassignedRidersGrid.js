@@ -1,6 +1,6 @@
 import React from "react";
 
-import { UNASSIGNED_RIDERS_GRID_ID, RIDER_TYPE } from "../constants";
+import { UNASSIGNED_RIDERS_GRID_ID, RIDER_TYPE } from "../../constants";
 import { useSelector } from "react-redux";
 import { Droppable } from "react-beautiful-dnd";
 import Rider from "./Rider";
@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const UnassignedRidersGrid = () => {
-
+  
   const classes = useStyles();
 
   const unassignedRiders = useSelector(state => state.unassignedRiders);

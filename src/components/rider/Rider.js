@@ -5,9 +5,9 @@ import FastfoodIcon from '@material-ui/icons/Fastfood';
 import Chip from '@material-ui/core/Chip';
 import { makeStyles } from '@material-ui/core';
 import { Draggable } from "react-beautiful-dnd";
-import { SOUTH, NORTH, OC } from "../constants";
-import { deleteRider } from "../actions";
-import { MyToolTip } from "./ToolTip";
+import { SOUTH, NORTH, OC } from "../../constants";
+import { deleteRider } from "../../actions";
+import { MyToolTip } from "../shared/ToolTip";
 
 const useStyles = makeStyles({
   root: {

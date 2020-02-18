@@ -1,16 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { useDispatch } from "react-redux";
 import { sort } from "./actions";
 import { DragDropContext } from "react-beautiful-dnd";
 import SplitPane from "react-split-pane";
-import Header from "./components/Header";
-import CarsGrid from "./components/CarsGrid";
-import UnassignedRidersGrid from "./components/UnassignedRidersGrid";
+import Header from "./components/header/Header";
+import CarsGrid from "./components/car/CarsGrid";
+import UnassignedRidersGrid from "./components/rider/UnassignedRidersGrid";
 
 function App() { 
 
+  const [trashVisible, setTrashVisible] = useState(false);
+  const [trashCanType, setTrashType] = useState(null);
+
   const dispatch = useDispatch();
+
+  const onDragStart = () => {
+    console.log("Show Trashcan here");
+    console.log("If you do that, hide trashcan onDragEnd");
+  };
   
   const onDragEnd = (result) => {
     const { destination, source, draggableId, type } = result;
@@ -27,11 +35,14 @@ function App() {
         )
       );
     }
-  }
-  
+  };
+
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
+    <DragDropContext onDragEnd={onDragEnd} onDragStart={onDragStart}>
       <div>
+        <div>
+          <Header/>
+        </div>
         <div>
           <Header/>
         </div>

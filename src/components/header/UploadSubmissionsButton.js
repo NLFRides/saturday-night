@@ -2,9 +2,9 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import ReactFileReader from 'react-file-reader';
 import { useDispatch } from "react-redux";
-import { addCar, addRider, clear } from "../actions";
+import { addCar, addRider, clear } from "../../actions";
 import Papa from 'papaparse';
-import { SOUTH, NORTH, OC } from "../constants";
+import { SOUTH, NORTH, OC } from "../../constants";
 
 const styles = {
   button: {

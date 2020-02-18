@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import Modal from '@material-ui/core/Modal';
 import AddForm from "./AddForm";
@@ -19,7 +19,7 @@ const AddButton = ({ type }) => {
   const buttonText = (type === "car")? "Add Car" : "Add Rider";
   const buttonStyle = (type === "car")? styles.carButton : styles.riderButton;
   
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
   };

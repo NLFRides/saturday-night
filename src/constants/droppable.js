@@ -3,3 +3,5 @@ export const RIDER_TYPE = "riderType";
 
 export const UNASSIGNED_RIDERS_GRID_ID = "unassignedRidersGrid";
 export const CARS_GRID_ID = "carsGrid";
+
+export const TRASH_CAN_ID = "trashCan";
