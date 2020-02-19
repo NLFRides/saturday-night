@@ -34,7 +34,7 @@ const carsReducer = (state = initialState, action) => {
         notes: notes,
       };
 
-      return { ...state, [id]: newCar };
+      return { ...state, id: newCar };
     }
 
     case CONSTANTS.DRAG_HAPPENED: {

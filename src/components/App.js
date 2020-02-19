@@ -1,26 +1,27 @@
 import React, { useState } from "react";
 
 import { useDispatch } from "react-redux";
-import { sort } from "./actions";
+import { sort } from "../actions";
 import { DragDropContext } from "react-beautiful-dnd";
 import SplitPane from "react-split-pane";
-import Header from "./components/header/Header";
-import CarsGrid from "./components/car/CarsGrid";
-import UnassignedRidersGrid from "./components/rider/UnassignedRidersGrid";
+import Header from "./header/Header";
+import CarsGrid from "./car/CarsGrid";
+import UnassignedRidersGrid from "./rider/UnassignedRidersGrid";
+import TrashCan from "./header/TrashCan";
 
-function App() { 
+function App() {
 
-  const [trashVisible, setTrashVisible] = useState(false);
-  const [trashCanType, setTrashType] = useState(null);
+  const [trashCan, setTrashCan] = useState({visible: false, type: null});
 
   const dispatch = useDispatch();
 
-  const onDragStart = () => {
-    console.log("Show Trashcan here");
-    console.log("If you do that, hide trashcan onDragEnd");
+  const onDragStart = (result) => {
+    const type = result.type;
+    setTrashCan({ visible: true, type: type });
   };
-  
+
   const onDragEnd = (result) => {
+    setTrashCan({ ...trashCan, visible:false });
     const { destination, source, draggableId, type } = result;
 
     if (destination) {
@@ -41,11 +42,9 @@ function App() {
     <DragDropContext onDragEnd={onDragEnd} onDragStart={onDragStart}>
       <div>
         <div>
-          <Header/>
+          <Header trashCan={trashCan} />
         </div>
-        <div>
-          <Header/>
-        </div>
+        { (trashCan.visible) ? <TrashCan trashType={trashCan.type}/> : null }
         <div>
           <SplitPane allowResize={false} split="vertical" minSize={300} defaultSize={300} style={{backgroundColor: '#d8ecf9'}}>
             <div>
@@ -57,6 +56,7 @@ function App() {
             </div>
           </SplitPane>
         </div>
+        
       </div>
     </DragDropContext>
   )

@@ -20,7 +20,7 @@ const UnassignedRidersGrid = () => {
   const classes = useStyles();
 
   const unassignedRiders = useSelector(state => state.unassignedRiders);
-
+  
   return (
     <Droppable droppableId={UNASSIGNED_RIDERS_GRID_ID} direction="horizontal" type={RIDER_TYPE}>
       {provided => (

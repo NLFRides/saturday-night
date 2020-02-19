@@ -14,6 +14,7 @@ const styles = {
 }
 
 const Header = () => {
+
   return (
     <div style={styles.header}>
       <AddButton type="car"></AddButton>

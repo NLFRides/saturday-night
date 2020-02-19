@@ -15,7 +15,7 @@ const styles = {
 }
 
 const CarsGrid = () => {
-
+  
   const carsOrder = useSelector(state => state.carsOrder);
 
   return (
